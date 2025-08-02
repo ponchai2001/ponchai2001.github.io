@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เที่ยวเลย - สุดยอดสถานที่ท่องเที่ยวจังหวัดเลย</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans Thai', sans-serif;
+            background-color: #f8f9fa;
+            scroll-behavior: smooth;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://i.pinimg.com/originals/db/6f/41/db6f4194dcd7567836a015e58a6b9b42.gif');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+        }
+        
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid orange;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: orange; }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex space-x-7">
+                    <div>
+                        <a href="#" class="flex items-center py-4 px-2">
+                            
+                            <span class="font-semibold text-gray-500 text-lg">เที่ยวเลย</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-1">
+                    <a href="#home" class="py-4 px-2 text-green-500 border-b-4 border-green-500 font-semibold">หน้าแรก</a>
+                    <a href="#attractions" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">สถานที่ท่องเที่ยว</a>
+                    <a href="#about" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">เกี่ยวกับเลย</a>
+                    <a href="#gallery" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">ภาพถ่าย</a>
+                    <a href="#contact" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">ติดต่อเรา</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button class="outline-none mobile-menu-button">
+                        <svg class="w-6 h-6 text-gray-500" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                            <path d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="hidden mobile-menu">
+            <ul class="">
+                <li><a href="#home" class="block text-sm px-2 py-4 hover:bg-green-500 hover:text-white transition duration-300">หน้าแรก</a></li>
+                <li><a href="#attractions" class="block text-sm px-2 py-4 hover:bg-green-500 hover:text-white transition duration-300">สถานที่ท่องเที่ยว</a></li>
+                <li><a href="#about" class="block text-sm px-2 py-4 hover:bg-green-500 hover:text-white transition duration-300">เกี่ยวกับเลย</a></li>
+                <li><a href="#gallery" class="block text-sm px-2 py-4 hover:bg-green-500 hover:text-white transition duration-300">ภาพถ่าย</a></li>
+                <li><a href="#contact" class="block text-sm px-2 py-4 hover:bg-green-500 hover:text-white transition duration-300">ติดต่อเรา</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content px-4">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 typewriter">จังหวัดเลย</h1>
+            <p class="text-xl md:text-2xl mb-8">สัมผัสความงามทางธรรมชาติที่ยังคงความบริสุทธิ์</p>
+            <a href="#attractions" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full transition duration-300 inline-block pulse">
+                เริ่มต้นการเดินทาง
+            </a>
+            <div class="absolute bottom-10 left-0 right-0 text-center">
+                <a href="#attractions" class="text-white animate-bounce inline-block">
+                    <svg class="w-5 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Loei Section -->
+    <section id="about" class="py-20 bg-white"  data-aos="fade-right"
+     data-aos-offset="300"
+     data-aos-easing="ease-in-sine">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">จังหวัดเลย</h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10 fade-in">
+                    <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2130&q=80" alt="Loei Landscape" class="rounded-lg shadow-xl w-full h-auto">
+                </div>
+                <div class="md:w-1/2 fade-in">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">ประวัติความเป็นมา</h3>
+                    <p class="text-gray-600 mb-4 leading-relaxed">
+                        จังหวัดเลยเป็นจังหวัดในภาคตะวันออกเฉียงเหนือตอนบนของประเทศไทย มีพื้นที่ประมาณ 11,424 ตารางกิโลเมตร มีประชากรประมาณ 600,000 คน มีอาณาเขตติดต่อกับประเทศลาวทางทิศเหนือและทิศตะวันออก
+                    </p>
+                    <p class="text-gray-600 mb-4 leading-relaxed">
+                        จังหวัดเลยมีประวัติศาสตร์ยาวนานตั้งแต่สมัยก่อนประวัติศาสตร์ โดยพบหลักฐานการอยู่อาศัยของมนุษย์มาตั้งแต่ยุคหินใหม่ มีความสำคัญในฐานะเส้นทางคมนาคมระหว่างที่ราบสูงโคราชกับลุ่มน้ำโขง
+                    </p>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        ในสมัยรัตนโกสินทร์ จังหวัดเลยได้รับการจัดตั้งเป็นเมืองในปี พ.ศ. 2440 ในรัชสมัยพระบาทสมเด็จพระจุลจอมเกล้าเจ้าอยู่หัว และยกฐานะเป็นจังหวัดในปี พ.ศ. 2450
+                    </p>
+                    <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
+                        <p class="text-green-700 italic">
+                            "เลยได้ชื่อว่าเป็นเมืองแห่งขุนเขาและสายหมอก เนื่องจากมีภูเขาสูงหลายลูกและมีอากาศเย็นสบายตลอดปี โดยเฉพาะในฤดูหนาวที่มีอุณหภูมิต่ำสุดในประเทศไทย"
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Attractions Section -->
+    <section id="attractions" class="py-20 bg-gray-50"  data-aos="fade-left">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-16">สถานที่ท่องเที่ยวแนะนำ</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                
+                <!-- Chiang Khan -->
+                <div class="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
+                    <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Chiang Khan" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">เชียงคาน</h3>
+                        <p class="text-gray-600 mb-4">ถนนคนเดินเชียงคาน บรรยากาศย้อนยุคริมแม่น้ำโขงที่ยังคงความดั้งเดิม</p>
+                        <div class="flex items-center text-yellow-500 mb-4">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span class="text-gray-600 ml-2">4.9</span>
+                        </div>
+                        <button onclick="showDetail('chiang-khan')" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full transition duration-300">
+                            ดูรายละเอียด
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Phu Bo Bit -->
+                <div class="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
+                    <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Phu Bo Bit" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">ภูบ่อบิด</h3>
+                        <p class="text-gray-600 mb-4">แหล่งท่องเที่ยวทางธรณีวิทยาที่น่าสนใจกับบ่อน้ำธรรมชาติที่ดูเหมือนไม่มีก้นบ่อ</p>
+                        <div class="flex items-center text-yellow-500 mb-4">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="text-gray-600 ml-2">4.6</span>
+                        </div>
+                        <button onclick="showDetail('phu-bo-bit')" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full transition duration-300">
+                            ดูรายละเอียด
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Kaeng Khut Khu -->
+                <div class="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
+                    <img src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2026&q=80" alt="Kaeng Khut Khu" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">แก่งคุดคู้</h3>
+                        <p class="text-gray-600 mb-4">แก่งหินขนาดใหญ่กลางแม่น้ำโขงที่สวยงามและเป็นสัญลักษณ์ของจังหวัดเลย</p>
+                        <div class="flex items-center text-yellow-500 mb-4">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span class="text-gray-600 ml-2">5.0</span>
+                        </div>
+                        <button onclick="showDetail('kaeng-khut-khu')" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full transition duration-300">
+                            ดูรายละเอียด
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Phu Lom Lo -->
+                <div class="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
+                    <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Phu Lom Lo" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">ภูลมโล</h3>
+                        <p class="text-gray-600 mb-4">ทุ่งดอกไม้ป่าที่สวยงามบนยอดเขาสูงในช่วงปลายฝนต้นหนาว</p>
+                        <div class="flex items-center text-yellow-500 mb-4">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="text-gray-600 ml-2">4.7</span>
+                        </div>
+                        <button onclick="showDetail('phu-lom-lo')" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full transition duration-300">
+                            ดูรายละเอียด
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-white" data-aos="zoom-out-up">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-16">ภาพถ่ายสถานที่ท่องเที่ยว</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div class="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
+                    <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Loei 1" class="w-full h-64 object-cover">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
+                    <img src="https://images.unsplash.com/photo-1470115636492-6d2b56f9146d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Loei 2" class="w-full h-64 object-cover">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
+                    <img src="https://images.unsplash.com/photo-1511497584788-876760111969?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2032&q=80" alt="Loei 3" class="w-full h-64 object-cover">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
+                    <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1948&q=80" alt="Loei 4" class="w-full h-64 object-cover">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
+                    <img src="https://images.unsplash.com/photo-1433086966358-54859d0ed716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Loei 5" class="w-full h-64 object-cover">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
+                    <img src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Loei 6" class="w-full h-64 object-cover">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
+                    <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Loei 7" class="w-full h-64 object-cover">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
+                    <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1925&q=80" alt="Loei 8" class="w-full h-64 object-cover">
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full transition duration-300 inline-flex items-center">
+                    <i class="fas fa-images mr-2"></i> ดูภาพเพิ่มเติม
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parallax Section -->
+    <section class="parallax py-32" style="background-image: url('https://images.unsplash.com/photo-1476231682828-37e571bc172f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80');">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold text-white mb-6">เตรียมตัวไปเที่ยวเลยกันเถอะ!</h2>
+            <p class="text-xl text-white mb-8">สัมผัสความงามทางธรรมชาติที่ยังคงความบริสุทธิ์และความสงบสุข</p>
+            <button class="bg-white hover:bg-gray-100 text-green-600 font-bold py-3 px-8 rounded-full transition duration-300">
+                วางแผนการเดินทาง
+            </button>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-16">ติดต่อเรา</h2>
+            
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">ข้อมูลติดต่อ</h3>
+                    <p class="text-gray-600 mb-6">
+                        หากคุณมีคำถามหรือต้องการข้อมูลเพิ่มเติมเกี่ยวกับการท่องเที่ยวจังหวัดเลย กรุณาติดต่อเราได้ที่ช่องทางด้านล่างนี้
+                    </p>
+                    
+                    <div class="flex items-start mb-4">
+                        <div class="bg-green-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-map-marker-alt text-green-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">ที่อยู่</h4>
+                            <p class="text-gray-600">123 ถนนเลย-เชียงคาน ตำบลเมือง อำเภอเมืองเลย จังหวัดเลย 42000</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start mb-4">
+                        <div class="bg-green-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-phone-alt text-green-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">โทรศัพท์</h4>
+                            <p class="text-gray-600">042-123456</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start mb-4">
+                        <div class="bg-green-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-envelope text-green-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">อีเมล</h4>
+                            <p class="text-gray-600">info@tiewloei.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="bg-green-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-clock text-green-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">เวลาทำการ</h4>
+                            <p class="text-gray-600">จันทร์-ศุกร์: 08:30 - 17:30 น.</p>
+                            <p class="text-gray-600">เสาร์-อาทิตย์: 09:00 - 15:00 น.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">ส่งข้อความถึงเรา</h3>
+                    <form class="space-y-4">
+                        <div>
+                            <label for="name" class="block text-gray-700 mb-2">ชื่อ-นามสกุล</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-gray-700 mb-2">อีเมล</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                        </div>
+                        
+                        <div>
+                            <label for="subject" class="block text-gray-700 mb-2">หัวข้อ</label>
+                            <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-gray-700 mb-2">ข้อความ</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg transition duration-300">
+                            ส่งข้อความ
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-8 md:mb-0">
+                    <h3 class="text-xl font-bold mb-4">เที่ยวเลย</h3>
+                    <p class="text-gray-400 max-w-md">
+                        เว็บไซต์แนะนำสถานที่ท่องเที่ยวในจังหวัดเลย ที่รวบรวมข้อมูลการท่องเที่ยวที่ครบครันและน่าเชื่อถือ
+                    </p>
+                </div>
+                
+                <div class="mb-8 md:mb-0">
+                    <h3 class="text-xl font-bold mb-4">ลิงก์ที่เกี่ยวข้อง</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">การท่องเที่ยวแห่งประเทศไทย</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">จังหวัดเลย</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">อุทยานแห่งชาติ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">ที่พักจังหวัดเลย</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">ติดตามเรา</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="bg-gray-700 hover:bg-blue-600 text-white p-3 rounded-full transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="bg-gray-700 hover:bg-pink-600 text-white p-3 rounded-full transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="bg-gray-700 hover:bg-blue-400 text-white p-3 rounded-full transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="bg-gray-700 hover:bg-red-600 text-white p-3 rounded-full transition duration-300">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 เที่ยวเลย. สงวนลิขสิทธิ์ทุกประการ.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div id="attractionModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg max-w-4xl w-full max-h-screen overflow-y-auto">
+            <div class="relative">
+                <button onclick="hideModal()" class="absolute top-4 right-4 bg-gray-800 text-white rounded-full p-2 hover:bg-gray-700 transition duration-300">
+                    <i class="fas fa-times"></i>
+                </button>
+                
+                <div id="modalContent" class="p-8">
+                    <!-- Content will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-8 right-8 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition duration-300 hidden">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.querySelector('.mobile-menu-button');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Fade in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('visible');
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', fadeInOnScroll);
+        window.addEventListener('load', fadeInOnScroll);
+        
+        // Back to top button
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('hidden');
+            } else {
+                backToTopButton.classList.add('hidden');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Modal functions
+        function showDetail(attractionId) {
+            const modal = document.getElementById('attractionModal');
+            const modalContent = document.getElementById('modalContent');
+            
+            let title = '';
+            let description = '';
+            let imageUrl = '';
+            let details = '';
+            
+            switch(attractionId) {
+                case 'phu-kradueng':
+                    title = 'ภูเรือ';
+                    description = 'อุทยานแห่งชาติภูเรือ หนึ่งในสถานที่ท่องเที่ยวทางธรรมชาติที่สวยงามที่สุดของประเทศไทย';
+                    imageUrl = 'https://images.unsplash.com/photo-1500382018108-844b71a3d121?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80';
+                    details = `
+                        <p class="mb-4">ภูเรือเป็นยอดเขาสูงที่มีความสูงประมาณ 1,365 เมตรจากระดับน้ำทะเลปานกลาง ตั้งอยู่ในเขตอุทยานแห่งชาติภูเรือ ซึ่งมีพื้นที่ครอบคลุมอำเภอภูเรือและอำเภอท่าลี่ จังหวัดเลย</p>
+                        
+                        <h4 class="font-semibold text-xl mb-2">จุดเด่นของภูเรือ</h4>
+                        <ul class="list-disc pl-5 mb-4 space-y-2">
+                            <li>เป็นแหล่งท่องเที่ยวทางธรรมชาติที่สำคัญของภาคอีสาน</li>
+                            <li>มีอากาศเย็นสบายตลอดปี อุณหภูมิเฉลี่ยประมาณ 20-25 องศาเซลเซียส</li>
+                            <li>ในฤดูหนาวจะมีอุณหภูมิต่ำสุดประมาณ 0-5 องศาเซลเซียส</li>
+                            <li>มีจุดชมวิวที่สวยงามหลายแห่ง เช่น ผานกเค้า ผาโหล่นน้อย ผาโหล่นใหญ่</li>
+                            <li>มีน้ำตกสวยงามหลายแห่ง เช่น น้ำตกสวนห้อม น้ำตกห้วยไคร้</li>
+                        </ul>
+                        
+                        <h4 class="font-semibold text-xl mb-2">การเดินทาง</h4>
+                        <p class="mb-4">จากตัวเมืองเลยใช้ทางหลวงหมายเลข 203 (เลย-ภูเรือ) ระยะทางประมาณ 48 กิโลเมตร ใช้เวลาเดินทางประมาณ 1 ชั่วโมง</p>
+                        
+                        <h4 class="font-semibold text-xl mb-2">ช่วงเวลาที่เหมาะสมในการท่องเที่ยว</h4>
+                        <p>ฤดูหนาว (พฤศจิกายน-กุมภาพันธ์) เป็นช่วงที่สวยงามที่สุด มีอากาศเย็นและมีโอกาสเห็นทะเลหมอกในตอนเช้า</p>
+                    `;
+                    break;
+                    
+                case 'phu-ruea':
+                    title = 'ภูเรือ';
+                    description = 'อุทยานแห่งชาติภูเรือ มีอากาศเย็นสบายตลอดปี และมีทิวทัศน์ที่สวยงามของทะเลหมอก';
+                    imageUrl = 'https://images.unsplash.com/photo-1518636277470-8aadaf6c90d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80';
+                    details = `
+                        <p class="mb-4">อุทยานแห่งชาติภูเรือตั้งอยู่ในเขตอำเภอภูเรือ จังหวัดเลย มีพื้นที่ประมาณ 120.84 ตารางกิโลเมตร ประกาศเป็นอุทยานแห่งชาติเมื่อวันที่ 26 กรกฎาคม พ.ศ. 2522</p>
+                        
+                        <h4 class="font-semibold text-xl mb-2">ลักษณะเด่น</h4>
+                        <ul class="list-disc pl-5 mb-4 space-y-2">
+                            <li>เป็นภูเขาสูงชันสลับซับซ้อน มีความสูงตั้งแต่ 400-1,365 เมตรจากระดับน้ำทะเล</li>
+                            <li>มีสภาพป่าที่อุดมสมบูรณ์ ทั้งป่าเต็งรัง ป่าเบญจพรรณ และป่าดิบเขา</li>
+                            <li>มีอากาศเย็นสบายตลอดปี อุณหภูมิเฉลี่ยประมาณ 20-25 องศาเซลเซียส</li>
+                            <li>ในฤดูหนาวจะมีอุณหภูมิต่ำสุดประมาณ 0-5 องศาเซลเซียส</li>
+                        </ul>
+                        
+                        <h4 class="font-semibold text-xl mb-2">สถานที่ท่องเที่ยวภายในอุทยาน</h4>
+                        <ul class="list-disc pl-5 mb-4 space-y-2">
+                            <li>ผานกเค้า - จุดชมวิวที่สวยงามสามารถมองเห็นทิวทัศน์ได้กว้างไกล</li>
+                            <li>ผาโหล่นน้อย - จุดชมพระอาทิตย์ขึ้นและทะเลหมอกในตอนเช้า</li>
+                            <li>น้ำตกสวนห้อม - น้ำตกขนาดกลางที่สวยงาม</li>
+                            <li>น้ำตกห้วยไคร้ - น้ำตกขนาดใหญ่ที่มีความสูงประมาณ 25 เมตร</li>
+                        </ul>
+                        
+                        <h4 class="font-semibold text-xl mb-2">สิ่งอำนวยความสะดวก</h4>
+                        <p>มีบ้านพักและสถานที่กางเต็นท์บริการนักท่องเที่ยว รวมถึงร้านอาหารและร้านขายของที่ระลึก</p>
+                    `;
+                    break;
+                    
+                case 'chiang-khan':
+                    title = 'เชียงคาน';
+                    description = 'ถนนคนเดินเชียงคาน บรรยากาศย้อนยุคริมแม่น้ำโขงที่ยังคงความดั้งเดิม';
+                    imageUrl = 'https://images.unsplash.com/photo-1527631746610-bca00a040d60?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80';
+                    details = `
+                        <p class="mb-4">อำเภอเชียงคานเป็นอำเภอเล็กๆ ที่ตั้งอยู่ริมแม่น้ำโขง ห่างจากตัวเมืองเลยประมาณ 50 กิโลเมตร มีบรรยากาศที่สงบและเป็นมิตร</p>
+                        
+                        <h4 class="font-semibold text-xl mb-2">จุดเด่นของเชียงคาน</h4>
+                        <ul class="list-disc pl-5 mb-4 space-y-2">
+                            <li>ถนนคนเดินเชียงคานที่มีบรรยากาศย้อนยุค</li>
+                            <li>บ้านไม้เก่าแก่ที่ยังคงรักษาสถาปัตยกรรมดั้งเดิม</li>
+                            <li>ตลาดเช้าชายโขงที่จำหน่ายอาหารพื้นเมืองและผักสดจากสวน</li>
+                            <li>วิถีชีวิตที่เรียบง่ายและเป็นมิตรของชาวบ้าน</li>
+                            <li>จุดชมวิวแม่น้ำโขงที่สวยงาม</li>
+                        </ul>
+                        
+                        <h4 class="font-semibold text-xl mb-2">กิจกรรมที่น่าสนใจ</h4>
+                        <ul class="list-disc pl-5 mb-4 space-y-2">
+                            <li>เดินชมถนนคนเดินในยามเย็น</li>
+                            <li>ชิมอาหารพื้นเมือง เช่น ส้มตำลาว แกงเห็ด แกงอ่อม</li>
+                            <li>นั่งเรือชมวิวแม่น้ำโขง</li>
+                            <li>ชมพระอาทิตย์ตกที่ริมแม่น้ำโขง</li>
+                            <li>ซื้อของที่ระลึกและงานหัตถกรรมพื้นบ้าน</li>
+                        </ul>
+                        
+                        <h4 class="font-semibold text-xl mb-2">ที่พักแนะนำ</h4>
+                        <p>มีที่พักแบบโฮมสเตย์และเกสต์เฮาส์หลายแห่งที่ให้บริการนักท่องเที่ยวในราคาย่อมเยา</p>
+                    `;
+                    break;
+                    
+                case 'phu-bo-bit':
+                    title = 'ภูบ่อบิด';
+                    description = 'แหล่งท่องเที่ยวทางธรณีวิทยาที่น่าสนใจกับบ่อน้ำธรรมชาติที่ดูเหมือนไม่มีก้นบ่อ';
+                    imageUrl = 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80';
+                    details = `
+                        <p class="mb-4">ภูบ่อบิดตั้งอยู่ในเขตอำเภอนาแห้ว จังหวัดเลย เป็นแหล่งท่องเที่ยวทางธรณีวิทยาที่น่าสนใจ โดยมีบ่อน้ำธรรมชาติที่ดูเหมือนไม่มีก้นบ่อ</p>
+                        
+                        <h4 class="font-semibold text-xl mb-2">ลักษณะเด่น</h4>
+                        <ul class="list-disc pl-5 mb-4 space-y-2">
+                            <li>เป็นบ่อน้ำธรรมชาติที่เกิดจากหินปูนที่ถูกน้ำกัดเซาะจนกลายเป็นโพรงลึก</li>
+                            <li>น้ำในบ่อมีสีเขียวมรกตที่สวยงาม</li>
+                            <li>มีความลึกประมาณ 15-20 เมตร แต่ดูเหมือนไม่มีก้นบ่อเนื่องจากความใสของน้ำ</li>
+                            <li>มีอุณหภูมิของน้ำคงที่ประมาณ 20-22 องศาเซลเซียสตลอดปี</li>
+                        </ul>
+                        
+                        <h4 class="font-semibold text-xl mb-2">กิจกรรมที่น่าสนใจ</h4>
+                        <ul class="list-disc pl-5 mb-4 space-y-2">
+                            <li>ชมความสวยงามของบ่อบิด</li>
+                            <li>ถ่ายภาพกับทัศนียภาพที่สวยงาม</li>
+                            <li>เดินศึกษาธรรมชาติรอบๆ บริเวณ</li>
+                            <li>ชมวิวทิวทัศน์ของอำเภอนาแห้วจากจุดชมวิว</li>
+                        </ul>
+                        
+                        <h4 class="font-semibold text-xl mb-2">การเดินทาง</h4>
+                        <p>จากตัวเมืองเลยใช้ทางหลวงหมายเลข 2013 (เลย-ด่านซ้าย) แล้วแยกเข้าทางหลวงหมายเลข 2116 ไปอำเภอนาแห้ว ระยะทางประมาณ 140 กิโลเมตร ใช้เวลาเดินทางประมาณ 2.5 ชั่วโมง</p>
+                    `;
+                    break;
+                    
+                case 'kaeng-khut-khu':
+                    title = 'แก่งคุดคู้';
+                    description = 'แก่งหินขนาดใหญ่กลางแม่น้ำโขงที่สวยงามและเป็นสัญลักษณ์ของจังหวัดเลย';
+                    imageUrl = 'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2026&q=80';
+                    details = `
+                        <p class="mb-4">แก่งคุดคู้เป็นแก่งหินขนาดใหญ่กลางแม่น้ำโขง ตั้งอยู่ที่อำเภอเชียงคาน จังหวัดเลย ห่างจากตัวอำเภอประมาณ 4 กิโลเมตร</p>
+                        
+                        <h4 class="font-semibold text-xl mb-2">ลักษณะเด่น</h4>
+                        <ul class="list-disc pl-5 mb-4 space-y-2">
+                            <li>เป็นแก่งหินขนาดใหญ่กลางแม่น้ำโขงที่สวยงาม</li>
+                            <li>ในฤดูแล้งจะเห็นแก่งหินโผล่พ้นน้ำชัดเจน</li>
+                            <li>มีสะพานไม้ทอดยาวไปยังกลางแก่งสำหรับนักท่องเที่ยวได้เดินชมความสวยงาม</li>
+                            <li>เป็นจุดชมพระอาทิตย์ตกที่สวยงาม</li>
+                        </ul>
+                        
+                        <h4 class="font-semibold text-xl mb-2">ตำนานแก่งคุดคู้</h4>
+                        <p class="mb-4">ตามตำนานเล่าว่า พญานาคสองตัวคือพญาสุวรรณนาคและพญาสุทโธนาคได้ต่อสู้กันจนทำให้เกิดเป็นแก่งหินขนาดใหญ่กลางแม่น้ำโขง</p>
+                        
+                        <h4 class="font-semibold text-xl mb-2">กิจกรรมที่น่าสนใจ</h4>
+                        <ul class="list-disc pl-5 mb-4 space-y-2">
+                            <li>เดินชมความสวยงามของแก่งหิน</li>
+                            <li>ชมพระอาทิตย์ตกที่ริมแม่น้ำโขง</li>
+                            <li>นั่งเรือชมวิวแม่น้ำโขง</li>
+                            <li>ซื้อของที่ระลึกและอาหารพื้นเมืองจากร้านค้าริมทาง</li>
+                        </ul>
+                        
+                        <h4 class="font-semibold text-xl mb-2">ช่วงเวลาที่เหมาะสมในการท่องเที่ยว</h4>
+                        <p>ฤดูแล้ง (พฤศจิกายน-พฤษภาคม) เป็นช่วงที่น้ำลดและสามารถเห็นแก่งหินได้ชัดเจนที่สุด</p>
+                    `;
+                    break;
+                    
+                case 'phu-lom-lo':
+                    title = 'ภูลมโล';
+                    description = 'ทุ่งดอกไม้ป่าที่สวยงามบนยอดเขาสูงในช่วงปลายฝนต้นหนาว';
+                    imageUrl = 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80';
+                    details = `
+                        <p class="mb-4">ภูลมโลตั้งอยู่ในเขตอุทยานแห่งชาติภูเรือ อำเภอภูเรือ จังหวัดเลย เป็นทุ่งดอกไม้ป่าที่สวยงามบนยอดเขาสูง</p>
+                        
+                        <h4 class="font-semibold text-xl mb-2">ลักษณะเด่น</h4>
+                        <ul class="list-disc pl-5 mb-4 space-y-2">
+                            <li>เป็นทุ่งดอกไม้ป่าที่สวยงามบนยอดเขาสูงประมาณ 1,200 เมตรจากระดับน้ำทะเล</li>
+                            <li>มีดอกไม้ป่าหลายชนิดบานสะพรั่งในช่วงปลายฤดูฝนถึงต้นฤดูหนาว (กันยายน-พฤศจิกายน)</li>
+                            <li>มีทิวทัศน์ของทะเลหมอกในตอนเช้าที่สวยงาม</li>
+                            <li>มีอากาศเย็นสบายตลอดปี</li>
+                        </ul>
+                        
+                        <h4 class="font-semibold text-xl mb-2">พันธุ์ไม้ที่พบ</h4>
+                        <ul class="list-disc pl-5 mb-4 space-y-2">
+                            <li>ดุสิตา (ดอกไม้ประจำจังหวัดเลย)</li>
+                            <li>หงส์เหิน</li>
+                            <li>กระดุมเงิน</li>
+                            <li>กุหลาบพันปี</li>
+                            <li>เอนอ้า</li>
+                        </ul>
+                        
+                        <h4 class="font-semibold text-xl mb-2">การเดินทาง</h4>
+                        <p class="mb-4">จากตัวเมืองเลยใช้ทางหลวงหมายเลข 203 (เลย-ภูเรือ) ถึงที่ทำการอุทยานแห่งชาติภูเรือ แล้วเดินเท้าขึ้นสู่ภูลมโลประมาณ 3 กิโลเมตร</p>
+                        
+                        <h4 class="font-semibold text-xl mb-2">ข้อแนะนำ</h4>
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li>ควรเตรียมร่างกายให้พร้อมสำหรับการเดินป่า</li>
+                            <li>นำน้ำดื่มและอาหารไปเพียงพอ</li>
+                            <li>แต่งกายให้เหมาะสมกับอากาศเย็น</li>
+                            <li>ไม่เก็บหรือทำลายดอกไม้ป่า</li>
+                        </ul>
+                    `;
+                    break;
+            }
+            
+            modalContent.innerHTML = `
+                <div class="mb-6">
+                    <img src="${imageUrl}" alt="${title}" class="w-full h-64 md:h-80 object-cover rounded-lg">
+                </div>
+                
+                <h2 class="text-3xl font-bold text-gray-800 mb-2">${title}</h2>
+                <p class="text-xl text-gray-600 mb-6">${description}</p>
+                
+                <div class="prose max-w-none">
+                    ${details}
+                </div>
+                
+                <div class="mt-8">
+                    <button onclick="hideModal()" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-6 rounded-lg transition duration-300 mr-4">
+                        ปิด
+                    </button>
+                    <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg transition duration-300">
+                        <i class="fas fa-map-marker-alt mr-2"></i> ดูแผนที่
+                    </button>
+                </div>
+            `;
+            
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function hideModal() {
+            const modal = document.getElementById('attractionModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+  AOS.init();
+</script>
+</body>
+</html>

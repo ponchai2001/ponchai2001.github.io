@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>โรงแรมหรูหรา | โรงแรมระดับ 5 ดาวพร้อมร้านค้าออนไลน์</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans Thai', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-slide {
+            background-size: cover;
+            background-position: center;
+            transition: background-image 0.5s ease-in-out;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .room-card:hover {
+            transform: scale(1.02);
+        }
+        
+        .nav-link:hover {
+            color: #f59e0b;
+        }
+        
+        .booking-form {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="bg-purple-900 text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-hotel text-2xl text-amber-200"></i>
+                <span class="text-xl font-bold">โรงแรมหรูหรา</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link hover:text-amber-200 transition">หน้าหลัก</a>
+                <a href="#about" class="nav-link hover:text-amber-200 transition">เกี่ยวกับเรา</a>
+                <a href="#booking" class="nav-link hover:text-amber-200 transition">จองห้องพัก</a>
+                <a href="#shop" class="nav-link hover:text-amber-200 transition">ร้านค้าออนไลน์</a>
+                <a href="#contact" class="nav-link hover:text-amber-200 transition">ติดต่อเรา</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="#" class="relative">
+                    <i class="fas fa-shopping-cart text-xl"></i>
+                    <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                </a>
+                <button class="md:hidden focus:outline-none" id="mobile-menu-button">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-amber-800 px-4 py-2">
+            <a href="#home" class="block py-2 hover:text-amber-200 transition">หน้าหลัก</a>
+            <a href="#about" class="block py-2 hover:text-amber-200 transition">เกี่ยวกับเรา</a>
+            <a href="#booking" class="block py-2 hover:text-amber-200 transition">จองห้องพัก</a>
+            <a href="#shop" class="block py-2 hover:text-amber-200 transition">ร้านค้าออนไลน์</a>
+            <a href="#contact" class="block py-2 hover:text-amber-200 transition">ติดต่อเรา</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen hero-slide" style="background-image: url('https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')">
+        <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+        <div class="container mx-auto px-4 h-full flex flex-col justify-center relative z-10 text-white">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">ประสบการณ์การพักผ่อนระดับหรู</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl">โรงแรมระดับ 5 ดาวที่ผสมผสานความทันสมัยกับวัฒนธรรมไทยอย่างลงตัว</p>
+            <div class="flex space-x-4">
+                <a href="#booking" class="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-lg font-medium transition">จองห้องพัก</a>
+                <a href="#shop" class="bg-white hover:bg-gray-100 text-amber-900 px-6 py-3 rounded-lg font-medium transition">ช็อปสินค้าของที่ระลึก</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promotions -->
+    <section class="py-16 bg-amber-50" data-aos="fade-right">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-amber-900">โปรโมชั่นพิเศษ</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="โปรโมชั่น 1" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">แพ็กเกจพักคู่</h3>
+                        <p class="text-gray-600 mb-4">พัก 2 คืน ฟรีอาหารเช้าและอาหารเย็นสำหรับ 2 ท่าน</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-amber-700">฿5,999</span>
+                            <span class="text-sm text-gray-500 line-through">฿7,500</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <img src="https://www.th-hellomagazine.com/wp-content/uploads/2019/07/pool.jpg" alt="โปรโมชั่น 2" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">พักยาวส่วนลดสูง</h3>
+                        <p class="text-gray-600 mb-4">พัก 7 คืนขึ้นไปรับส่วนลด 20% พร้อมบริการเสริมฟรี</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-amber-700">฿3,999/คืน</span>
+                            <span class="text-sm text-gray-500 line-through">฿4,999/คืน</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80" alt="โปรโมชั่น 3" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Honeymoon Package</h3>
+                        <p class="text-gray-600 mb-4">ห้องสวีทสุดพิเศษพร้อมดอกไม้และไวน์ฟรี</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-amber-700">฿8,999</span>
+                            <span class="text-sm text-gray-500 line-through">฿11,500</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us -->
+    <section id="about" class="py-16 bg-white" data-aos="fade-left">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-amber-900">เกี่ยวกับเรา</h2>
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="โรงแรมหรูหรา" class="rounded-lg shadow-xl w-full">
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-bold mb-4 text-amber-800">ประวัติโรงแรม</h3>
+                    <p class="text-gray-700 mb-6">โรงแรมหรูหราก่อตั้งขึ้นในปี 2548 ด้วยวิสัยทัศน์ในการสร้างประสบการณ์การพักผ่อนระดับโลกบนพื้นฐานของความเป็นไทย เราได้พัฒนาจนกลายเป็นหนึ่งในโรงแรมชั้นนำของประเทศที่ได้รับรางวัลมากมาย</p>
+                    
+                    <h3 class="text-2xl font-bold mb-4 text-amber-800">สิ่งอำนวยความสะดวก</h3>
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="flex items-center">
+                            <i class="fas fa-swimming-pool text-amber-600 mr-2"></i>
+                            <span>สระว่ายน้ำ Infinity</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-spa text-amber-600 mr-2"></i>
+                            <span>สปาระดับพรีเมียม</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-utensils text-amber-600 mr-2"></i>
+                            <span>ร้านอาหาร 5 แห่ง</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-dumbbell text-amber-600 mr-2"></i>
+                            <span>ฟิตเนสครบวงจร</span>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-2xl font-bold mb-4 text-amber-800">ความพิเศษของเรา</h3>
+                    <p class="text-gray-700">เราภูมิใจนำเสนอการบริการที่เป็นเลิศด้วยทีมงานมืออาชีพ ที่พักอันหรูหรา และรายละเอียดทุกอย่างที่ออกแบบมาเพื่อความสบายและความประทับใจของท่าน</p>
+                </div>
+            </div>
+            
+            <!-- Gallery -->
+            <div class="mt-16">
+                <h3 class="text-2xl font-bold mb-8 text-center text-amber-800">บรรยากาศภายในโรงแรม</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80" alt="โรงแรม 1" class="h-48 w-full object-cover rounded-lg shadow hover:shadow-lg transition">
+                    <img src="https://www.th-hellomagazine.com/wp-content/uploads/2019/07/pool.jpg" alt="โรงแรม 2" class="h-48 w-full object-cover rounded-lg shadow hover:shadow-lg transition">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="โรงแรม 3" class="h-48 w-full object-cover rounded-lg shadow hover:shadow-lg transition">
+                    <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="โรงแรม 4" class="h-48 w-full object-cover rounded-lg shadow hover:shadow-lg transition">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="py-16 bg-amber-50 relative"  data-aos="zoom-in-up">
+        <div class="absolute inset-0 bg-amber-900 opacity-10"></div>
+        <div class="container mx-auto px-4 relative">
+            <h2 class="text-3xl font-bold text-center mb-12 text-amber-900">จองห้องพัก</h2>
+            
+            <div class="bg-white rounded-xl shadow-xl overflow-hidden max-w-4xl mx-auto">
+                <div class="flex flex-col md:flex-row">
+                    <!-- Booking Form -->
+                    <div class="p-8 md:w-1/2 booking-form">
+                        <h3 class="text-xl font-bold mb-6 text-amber-800">กรุณากรอกข้อมูลการจอง</h3>
+                        
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-2">วันที่เช็คอิน</label>
+                            <input type="date" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-2">วันที่เช็คเอาท์</label>
+                            <input type="date" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-2">ประเภทห้อง</label>
+                            <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                                <option value="">เลือกประเภทห้อง</option>
+                                <option value="deluxe">ห้องเดลักซ์ - ฿3,999/คืน</option>
+                                <option value="premium">ห้องพรีเมียม - ฿5,999/คืน</option>
+                                <option value="suite">ห้องสวีท - ฿8,999/คืน</option>
+                                <option value="presidential">ห้องประธานาธิบดี - ฿15,999/คืน</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-2">จำนวนผู้ใหญ่</label>
+                            <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                                <option value="1">1 คน</option>
+                                <option value="2">2 คน</option>
+                                <option value="3">3 คน</option>
+                                <option value="4">4 คน</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="block text-gray-700 mb-2">จำนวนเด็ก</label>
+                            <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                                <option value="0">0 คน</option>
+                                <option value="1">1 คน</option>
+                                <option value="2">2 คน</option>
+                            </select>
+                        </div>
+                        
+                        <button class="w-full bg-amber-600 hover:bg-amber-700 text-white py-3 rounded-lg font-medium transition">ตรวจสอบห้องว่าง</button>
+                    </div>
+                    
+                    <!-- Room Types -->
+                    <div class="p-8 md:w-1/2 bg-amber-100">
+                        <h3 class="text-xl font-bold mb-6 text-amber-800">ประเภทห้องพัก</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="room-card bg-white p-4 rounded-lg shadow transition cursor-pointer">
+                                <div class="flex items-start">
+                                    <img src="https://media-cdn.tripadvisor.com/media/photo-s/0f/78/b1/60/caption.jpg" alt="ห้องเดลักซ์" class="w-24 h-24 object-cover rounded">
+                                    <div class="ml-4">
+                                        <h4 class="font-bold">ห้องเดลักซ์</h4>
+                                        <p class="text-sm text-gray-600 mb-2">ห้องกว้างขวางพร้อมวิวสวน</p>
+                                        <p class="text-amber-700 font-bold">฿3,999/คืน</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="room-card bg-white p-4 rounded-lg shadow transition cursor-pointer">
+                                <div class="flex items-start">
+                                    <img src="https://pix10.agoda.net/hotelImages/555/555208/555208_16092010140046646907.jpg?ca=13&ce=1&s=414x232" alt="ห้องพรีเมียม" class="w-24 h-24 object-cover rounded">
+                                    <div class="ml-4">
+                                        <h4 class="font-bold">ห้องพรีเมียม</h4>
+                                        <p class="text-sm text-gray-600 mb-2">วิวทะเลและสิ่งอำนวยความสะดวกครบครัน</p>
+                                        <p class="text-amber-700 font-bold">฿5,999/คืน</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="room-card bg-white p-4 rounded-lg shadow transition cursor-pointer">
+                                <div class="flex items-start">
+                                    <img src="https://images.trvl-media.com/lodging/10000000/9390000/9385800/9385794/c24845ba.jpg?impolicy=fcrop&w=1200&h=800&p=1&q=medium" alt="ห้องสวีท" class="w-24 h-24 object-cover rounded">
+                                    <div class="ml-4">
+                                        <h4 class="font-bold">ห้องสวีท</h4>
+                                        <p class="text-sm text-gray-600 mb-2">ห้องพักขนาดใหญ่พร้อมห้องนั่งเล่นแยก</p>
+                                        <p class="text-amber-700 font-bold">฿8,999/คืน</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Online Shop -->
+    <section id="shop" class="py-16 bg-white" data-aos="zoom-out-right">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-amber-900">ร้านค้าออนไลน์</h2>
+            <p class="text-center max-w-2xl mx-auto mb-12 text-gray-700">สินค้าของที่ระลึกคุณภาพสูงจากโรงแรมหรูหรา สามารถสั่งซื้อและรับสินค้าที่ห้องพักหรือจัดส่งถึงบ้านคุณ</p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Product 1 -->
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden transition">
+                    <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80" alt="สบู่หอม" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-2">สบู่หอมสูตรพิเศษ</h3>
+                        <p class="text-gray-600 text-sm mb-4">สบู่หอมกลิ่นไทยแท้จากโรงแรมหรูหรา</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-amber-700">฿350</span>
+                            <button class="add-to-cart bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded text-sm transition" data-id="1" data-name="สบู่หอมสูตรพิเศษ" data-price="350">
+                                <i class="fas fa-cart-plus mr-1"></i> เพิ่มลงตะกร้า
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden transition">
+                    <img src="https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="ชุดชาจีน" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-2">ชุดชาจีนพรีเมียม</h3>
+                        <p class="text-gray-600 text-sm mb-4">ชุดชาจีนคุณภาพสูงจากโรงแรมหรูหรา</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-amber-700">฿1,200</span>
+                            <button class="add-to-cart bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded text-sm transition" data-id="2" data-name="ชุดชาจีนพรีเมียม" data-price="1200">
+                                <i class="fas fa-cart-plus mr-1"></i> เพิ่มลงตะกร้า
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden transition">
+                    <img src="https://inwfile.com/s-dx/c1ijtv.jpg" alt="ผ้าขนหนู" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-2">ผ้าขนหนูหรูหรา</h3>
+                        <p class="text-gray-600 text-sm mb-4">ผ้าขนหนูคุณภาพสูงจากโรงแรมหรูหรา</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-amber-700">฿850</span>
+                            <button class="add-to-cart bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded text-sm transition" data-id="3" data-name="ผ้าขนหนูหรูหรา" data-price="850">
+                                <i class="fas fa-cart-plus mr-1"></i> เพิ่มลงตะกร้า
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden transition">
+                    <img src="https://inwfile.com/s-fq/hh77qk.jpg" alt="ชุดเครื่องแป้ง" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-2">ชุดเครื่องแป้งหรูหรา</h3>
+                        <p class="text-gray-600 text-sm mb-4">ชุดเครื่องแป้งคุณภาพสูงจากโรงแรมหรูหรา</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-amber-700">฿1,500</span>
+                            <button class="add-to-cart bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded text-sm transition" data-id="4" data-name="ชุดเครื่องแป้งหรูหรา" data-price="1500">
+                                <i class="fas fa-cart-plus mr-1"></i> เพิ่มลงตะกร้า
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Cart Modal -->
+            <div id="cart-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+                <div class="bg-white rounded-lg shadow-xl max-w-md w-full max-h-[80vh] overflow-y-auto">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-bold">ตะกร้าสินค้า</h3>
+                            <button id="close-cart" class="text-gray-500 hover:text-gray-700">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        
+                        <div id="cart-items" class="mb-4">
+                            <!-- Cart items will be added here dynamically -->
+                            <p class="text-gray-500 text-center py-4">ไม่มีสินค้าในตะกร้า</p>
+                        </div>
+                        
+                        <div class="border-t pt-4">
+                            <div class="flex justify-between mb-2">
+                                <span>รวมทั้งหมด:</span>
+                                <span id="cart-total">฿0</span>
+                            </div>
+                            <button id="checkout-btn" class="w-full bg-amber-600 hover:bg-amber-700 text-white py-2 rounded-lg font-medium transition disabled:opacity-50" disabled>
+                                ดำเนินการชำระเงิน
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us -->
+    <section id="contact" class="py-16 bg-amber-50" data-aos="fade-up"
+     data-aos-duration="3000">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-amber-900">ติดต่อเรา</h2>
+            
+            <div class="flex flex-col md:flex-row gap-12">
+                <!-- Contact Info -->
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-bold mb-6 text-amber-800">ข้อมูลติดต่อ</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-amber-600 mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-bold">ที่อยู่</h4>
+                                <p class="text-gray-700">123 ถนนสุขุมวิท แขวงคลองเตย เขตคลองเตย กรุงเทพมหานคร 10110</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <i class="fas fa-phone-alt text-amber-600 mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-bold">โทรศัพท์</h4>
+                                <p class="text-gray-700">02-123-4567</p>
+                                <p class="text-gray-700">081-234-5678 (สายด่วน)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <i class="fas fa-envelope text-amber-600 mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-bold">อีเมล</h4>
+                                <p class="text-gray-700">info@luxuryhotel.com</p>
+                                <p class="text-gray-700">reservation@luxuryhotel.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <i class="fas fa-clock text-amber-600 mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-bold">เวลาทำการ</h4>
+                                <p class="text-gray-700">ทุกวัน 24 ชั่วโมง</p>
+                                <p class="text-gray-700">แผนกจองห้องพัก: 08:00 - 22:00 น.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-bold mb-4">ติดตามเรา</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="bg-amber-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-amber-700 transition">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="bg-amber-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-amber-700 transition">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="bg-amber-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-amber-700 transition">
+                                <i class="fab fa-line"></i>
+                            </a>
+                            <a href="#" class="bg-amber-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-amber-700 transition">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-bold mb-6 text-amber-800">แบบฟอร์มติดต่อ</h3>
+                    
+                    <form class="space-y-4">
+                        <div>
+                            <label class="block text-gray-700 mb-1">ชื่อ-นามสกุล</label>
+                            <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-700 mb-1">อีเมล</label>
+                            <input type="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-700 mb-1">เบอร์โทรศัพท์</label>
+                            <input type="tel" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-700 mb-1">หัวข้อ</label>
+                            <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                                <option value="">เลือกหัวข้อ</option>
+                                <option value="booking">การจองห้องพัก</option>
+                                <option value="service">บริการ</option>
+                                <option value="feedback">ข้อเสนอแนะ</option>
+                                <option value="other">อื่นๆ</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-700 mb-1">ข้อความ</label>
+                            <textarea rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-amber-600 hover:bg-amber-700 text-white py-3 rounded-lg font-medium transition">ส่งข้อความ</button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Google Map -->
+            <div class="mt-16">
+                <h3 class="text-2xl font-bold mb-6 text-center text-amber-800">แผนที่โรงแรม</h3>
+                <div class="bg-gray-200 h-96 rounded-lg overflow-hidden">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.511963888214!2d100.5563143153447!3d13.74649060138436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29ec9379a97a1%3A0x7d5f1f3b5f6b3b4e!2sSukhumvit%20Road%2C%20Khlong%20Toei%2C%20Bangkok%2010110!5e0!3m2!1sen!2sth!4v1620000000000!5m2!1sen!2sth" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-amber-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-hotel text-amber-200 mr-2"></i> โรงแรมหรูหรา
+                    </h3>
+                    <p class="text-amber-100">ประสบการณ์การพักผ่อนระดับโลกบนพื้นฐานของความเป็นไทย</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">เมนู</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="hover:text-amber-200 transition">หน้าหลัก</a></li>
+                        <li><a href="#about" class="hover:text-amber-200 transition">เกี่ยวกับเรา</a></li>
+                        <li><a href="#booking" class="hover:text-amber-200 transition">จองห้องพัก</a></li>
+                        <li><a href="#shop" class="hover:text-amber-200 transition">ร้านค้าออนไลน์</a></li>
+                        <li><a href="#contact" class="hover:text-amber-200 transition">ติดต่อเรา</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">ติดต่อ</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-amber-200 mt-1 mr-2"></i>
+                            <span>123 ถนนสุขุมวิท กรุงเทพฯ</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt text-amber-200 mt-1 mr-2"></i>
+                            <span>02-123-4567</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope text-amber-200 mt-1 mr-2"></i>
+                            <span>info@luxuryhotel.com</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">รับข่าวสารโปรโมชั่น</h3>
+                    <form class="space-y-2">
+                        <input type="email" placeholder="อีเมลของคุณ" class="w-full px-4 py-2 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-amber-500">
+                        <button type="submit" class="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-lg text-sm transition">สมัครสมาชิก</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-amber-800 mt-8 pt-8 text-center text-amber-200">
+                <p>&copy; 2023 โรงแรมหรูหรา. สงวนลิขสิทธิ์ทุกประการ.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-amber-600 text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center hover:bg-amber-700 transition opacity-0 invisible">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Hero slider
+        const heroImages = [
+            'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+            'https://www.chillpainai.com/src/wewakeup/img_hotels/813/1.jpg',
+            'https://www.chillpainai.com/src/wewakeup/scoop/images/e6714403515d9bda258d67aa73fd7edd2919d219.jpg'
+        ];
+        
+        let currentImage = 0;
+        const heroSection = document.querySelector('.hero-slide');
+        
+        function changeHeroImage() {
+            currentImage = (currentImage + 1) % heroImages.length;
+            heroSection.style.backgroundImage = `url('${heroImages[currentImage]}')`;
+        }
+        
+        setInterval(changeHeroImage, 2500);
+
+        // Shopping cart functionality
+        let cart = [];
+        
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const id = this.getAttribute('data-id');
+                const name = this.getAttribute('data-name');
+                const price = parseFloat(this.getAttribute('data-price'));
+                
+                // Check if item already in cart
+                const existingItem = cart.find(item => item.id === id);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({
+                        id,
+                        name,
+                        price,
+                        quantity: 1
+                    });
+                }
+                
+                updateCart();
+                
+                // Show feedback
+                const feedback = document.createElement('div');
+                feedback.className = 'fixed bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded shadow-lg animate-bounce';
+                feedback.innerHTML = `<i class="fas fa-check-circle mr-2"></i> ${name} ถูกเพิ่มลงตะกร้าแล้ว`;
+                document.body.appendChild(feedback);
+                
+                setTimeout(() => {
+                    feedback.remove();
+                }, 2000);
+            });
+        });
+        
+        function updateCart() {
+            // Update cart count
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cart-count').textContent = totalItems;
+            
+            // Update cart modal
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotalElement = document.getElementById('cart-total');
+            const checkoutBtn = document.getElementById('checkout-btn');
+            
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p class="text-gray-500 text-center py-4">ไม่มีสินค้าในตะกร้า</p>';
+                cartTotalElement.textContent = '฿0';
+                checkoutBtn.disabled = true;
+            } else {
+                let html = '';
+                let total = 0;
+                
+                cart.forEach(item => {
+                    const itemTotal = item.price * item.quantity;
+                    total += itemTotal;
+                    
+                    html += `
+                        <div class="flex justify-between items-center py-2 border-b">
+                            <div>
+                                <h4 class="font-medium">${item.name}</h4>
+                                <div class="flex items-center mt-1">
+                                    <button class="change-quantity px-2 text-gray-500 hover:text-amber-600" data-id="${item.id}" data-change="-1">
+                                        <i class="fas fa-minus text-xs"></i>
+                                    </button>
+                                    <span class="mx-2">${item.quantity}</span>
+                                    <button class="change-quantity px-2 text-gray-500 hover:text-amber-600" data-id="${item.id}" data-change="1">
+                                        <i class="fas fa-plus text-xs"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="block">฿${itemTotal.toFixed(2)}</span>
+                                <button class="remove-item text-red-500 text-sm mt-1 hover:text-red-700" data-id="${item.id}">
+                                    <i class="fas fa-trash-alt mr-1"></i> ลบ
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                cartItemsContainer.innerHTML = html;
+                cartTotalElement.textContent = `฿${total.toFixed(2)}`;
+                checkoutBtn.disabled = false;
+                
+                // Add event listeners to quantity buttons
+                document.querySelectorAll('.change-quantity').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const id = this.getAttribute('data-id');
+                        const change = parseInt(this.getAttribute('data-change'));
+                        
+                        const item = cart.find(item => item.id === id);
+                        if (item) {
+                            item.quantity += change;
+                            
+                            if (item.quantity <= 0) {
+                                cart = cart.filter(item => item.id !== id);
+                            }
+                            
+                            updateCart();
+                        }
+                    });
+                });
+                
+                // Add event listeners to remove buttons
+                document.querySelectorAll('.remove-item').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const id = this.getAttribute('data-id');
+                        cart = cart.filter(item => item.id !== id);
+                        updateCart();
+                    });
+                });
+            }
+        }
+        
+        // Cart modal toggle
+        document.querySelector('a[href="#"]').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('cart-modal').classList.remove('hidden');
+        });
+        
+        document.getElementById('close-cart').addEventListener('click', function() {
+            document.getElementById('cart-modal').classList.add('hidden');
+        });
+        
+        // Checkout button
+        document.getElementById('checkout-btn').addEventListener('click', function() {
+            alert('ระบบชำระเงิน: ขอบคุณสำหรับการสั่งซื้อสินค้า!\n\nคุณสามารถชำระเงินที่หน้าเคาน์เตอร์โรงแรมหรือจัดส่งสินค้าถึงบ้านคุณ');
+            cart = [];
+            updateCart();
+            document.getElementById('cart-modal').classList.add('hidden');
+        });
+        
+        // Back to top button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href') === '#') return;
+                
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+  AOS.init();
+</script>
+</body>
+</html>
